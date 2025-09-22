@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Spam-only Chat — Modern UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- --- Login Page --- -->
+  <div id="loginPage" class="page active">
+    <div class="login-wrap">
+      <h1>Welcome to Spam Chat</h1>
+      <input id="usernameInput" type="text" placeholder="Enter your username" />
+      <button id="loginBtn" class="btn primary">Enter Chat</button>
+    </div>
+  </div>
+
+  <!-- --- Chat Page --- -->
+  <div id="chatPage" class="page">
+    <aside class="sidebar">
+      <div class="logo">SC</div>
+      <h2>Spam-only Moderator</h2>
+      <p class="lead">Detects spam — SAFE messages allowed</p>
+
+      <div class="detector">
+        <div style="display:flex; justify-content:space-between">
+          <strong>Spam Score</strong>
+          <span id="scoreLabel">0</span>
+        </div>
+        <div class="meter"><i id="scoreMeter"></i></div>
+        <p class="muted">Rules: URL scan • Spam keywords • Repetition • Multi-link</p>
+      </div>
+
+      <div style="margin-top:auto">
+        <div class="control-row">
+          <button id="clearBtn" class="btn ghost">Clear History</button>
+          <button id="exportBtn" class="btn primary">Export</button>
+        </div>
+        <p class="muted">Block status: <span id="blockStatus">Not blocked</span></p>
+      </div>
+    </aside>
+
+    <main class="chat-wrap">
+      <div class="topbar">
+        <div id="welcomeMsg">Hello!</div>
+        <div class="muted">Spam-only mode</div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <form class="composer" id="composer" onsubmit="return false;">
+        <textarea id="input" class="input" placeholder="Type a message... (spam will be blocked)"></textarea>
+        <div class="control-row">
+          <button id="sendBtn" class="btn primary">Send</button>
+          <button id="unblockBtn" class="btn ghost" style="display:none">Unblock</button>
+        </div>
+      </form>
+
+      <div style="padding:10px 18px; display:flex; justify-content:space-between; align-items:center;">
+        <div id="liveVerdict" class="muted">Type to see spam analysis</div>
+        <div id="spamActions"></div>
+      </div>
+    </main>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
